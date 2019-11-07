@@ -38,3 +38,34 @@ struct seat{
         seat *rch;
 
 };
+
+struct psgr{
+
+    psgr(string n, int a, char g){
+        name = n;
+        age = a;
+        gender = g;
+    }
+
+    string name;
+    int age;
+    char gender;
+
+};
+
+struct ticket{
+
+    int pnr;
+    int ammount;
+    
+    string train_name;
+    string jdate;
+
+    int psgrs;
+    vector<psgr*> psgr_list;
+    
+    vector<int> seats;
+
+};
+
+vector<ticket*> booked_tickets;
