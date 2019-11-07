@@ -1,5 +1,5 @@
 
-#include "Classes.cpp"
+#include "Classes.cpp" 
 
 class DataCenter{
 
@@ -25,74 +25,87 @@ class DataCenter{
 
 
 
-            delhi_patna_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Magadh Express", "14/11/2019", 20802)));
-            delhi_patna_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Magadh Express", "15/11/2019", 20802)));
-            delhi_patna_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Magadh Express", "16/11/2019", 20802)));
-            delhi_patna_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Magadh Express", "17/11/2019", 20802)));
-            delhi_patna_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Magadh Express", "18/11/2019", 20802)));
+            
+            delhi_patna_trains.push_back(new Train("14/11/2019", 20802, "Magadh Express"));
+            delhi_patna_trains.push_back(new Train("15/11/2019", 20802, "Magadh Express"));
+            delhi_patna_trains.push_back(new Train("16/11/2019", 20802, "Magadh Express"));
+            delhi_patna_trains.push_back(new Train("17/11/2019", 20802, "Magadh Express"));
+            delhi_patna_trains.push_back(new Train("18/11/2019", 20802, "Magadh Express"));
 
-            delhi_patna_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Howrah Duronto Express", "14/11/2019", 12274)));
-            delhi_patna_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Howrah Duronto Express", "15/11/2019", 12274)));
-            delhi_patna_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Howrah Duronto Express", "16/11/2019", 12274)));
-            delhi_patna_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Howrah Duronto Express", "17/11/2019", 12274)));
-            delhi_patna_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Howrah Duronto Express", "18/11/2019", 12274)));
+            delhi_patna_trains.push_back(new Train("14/11/2019", 12274, "Howrah Duronto Express"));
+            delhi_patna_trains.push_back(new Train("15/11/2019", 12274, "Howrah Duronto Express"));
+            delhi_patna_trains.push_back(new Train("16/11/2019", 12274, "Howrah Duronto Express"));
+            delhi_patna_trains.push_back(new Train("17/11/2019", 12274, "Howrah Duronto Express"));
+            delhi_patna_trains.push_back(new Train("18/11/2019", 12274, "Howrah Duronto Express"));
 
-            delhi_patna_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Shramjeevi SF Express", "14/11/2019", 12392)));
-            delhi_patna_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Shramjeevi SF Express", "15/11/2019", 12392)));
-            delhi_patna_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Shramjeevi SF Express", "16/11/2019", 12392)));
-            delhi_patna_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Shramjeevi SF Express", "17/11/2019", 12392)));
-            delhi_patna_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Shramjeevi SF Express", "18/11/2019", 12392)));
+            delhi_patna_trains.push_back(new Train("14/11/2019", 12392, "Shramjeevi SF Express"));
+            delhi_patna_trains.push_back(new Train("15/11/2019", 12392, "Shramjeevi SF Express"));
+            delhi_patna_trains.push_back(new Train("16/11/2019", 12392, "Shramjeevi SF Express"));
+            delhi_patna_trains.push_back(new Train("17/11/2019", 12392, "Shramjeevi SF Express"));
+            delhi_patna_trains.push_back(new Train("18/11/2019", 12392, "Shramjeevi SF Express"));
 
-            delhi_patna_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Farakka Express", "14/11/2019", 13484)));
-            delhi_patna_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Farakka Express", "15/11/2019", 13484)));
-            delhi_patna_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Farakka Express", "16/11/2019", 13484)));
-            delhi_patna_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Farakka Express", "17/11/2019", 13484)));
-            delhi_patna_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Farakka Express", "18/11/2019", 13484)));
+            delhi_patna_trains.push_back(new Train("14/11/2019", 13484, "Farakka Express"));
+            delhi_patna_trains.push_back(new Train("15/11/2019", 13484, "Farakka Express"));
+            delhi_patna_trains.push_back(new Train("16/11/2019", 13484, "Farakka Express"));
+            delhi_patna_trains.push_back(new Train("17/11/2019", 13484, "Farakka Express"));
+            delhi_patna_trains.push_back(new Train("18/11/2019", 13484, "Farakka Express"));
 
-            delhi_patna_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Vikramshila Express", "14/11/2019", 12468)));
-            delhi_patna_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Vikramshila Express", "15/11/2019", 12468)));
-            delhi_patna_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Vikramshila Express", "16/11/2019", 12468)));
-            delhi_patna_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Vikramshila Express", "17/11/2019", 12468)));
-            delhi_patna_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Vikramshila Express", "18/11/2019", 12468)));
-
-
-
+            delhi_patna_trains.push_back(new Train("14/11/2019", 12468, "Vikramshila Express"));
+            delhi_patna_trains.push_back(new Train("15/11/2019", 12468, "Vikramshila Express"));
+            delhi_patna_trains.push_back(new Train("16/11/2019", 12468, "Vikramshila Express"));
+            delhi_patna_trains.push_back(new Train("17/11/2019", 12468, "Vikramshila Express"));
+            delhi_patna_trains.push_back(new Train("18/11/2019", 12468, "Vikramshila Express"));
 
 
-            patna_delhi_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Magadh Express", "14/11/2019", 20801)));
-            patna_delhi_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Magadh Express", "15/11/2019", 20801)));
-            patna_delhi_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Magadh Express", "16/11/2019", 20801)));
-            patna_delhi_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Magadh Express", "17/11/2019", 20801)));
-            patna_delhi_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Magadh Express", "18/11/2019", 20801)));
 
-            patna_delhi_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Howrah Duronto Express", "14/11/2019", 12275)));
-            patna_delhi_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Howrah Duronto Express", "15/11/2019", 12275)));
-            patna_delhi_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Howrah Duronto Express", "16/11/2019", 12275)));
-            patna_delhi_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Howrah Duronto Express", "17/11/2019", 12275)));
-            patna_delhi_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Howrah Duronto Express", "18/11/2019", 12275)));
 
-            patna_delhi_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Shramjeevi SF Express", "14/11/2019", 12391)));
-            patna_delhi_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Shramjeevi SF Express", "15/11/2019", 12391)));
-            patna_delhi_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Shramjeevi SF Express", "16/11/2019", 12391)));
-            patna_delhi_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Shramjeevi SF Express", "17/11/2019", 12391)));
-            patna_delhi_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Shramjeevi SF Express", "18/11/2019", 12391)));
 
-            patna_delhi_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Farakka Express", "14/11/2019", 13483)));
-            patna_delhi_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Farakka Express", "15/11/2019", 13483)));
-            patna_delhi_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Farakka Express", "16/11/2019", 13483)));
-            patna_delhi_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Farakka Express", "17/11/2019", 13483)));
-            patna_delhi_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Farakka Express", "18/11/2019", 13483)));
+            patna_delhi_trains.push_back(new Train("14/11/2019", 20801, "Magadh Express"));
+            patna_delhi_trains.push_back(new Train("15/11/2019", 20801, "Magadh Express"));
+            patna_delhi_trains.push_back(new Train("16/11/2019", 20801, "Magadh Express"));
+            patna_delhi_trains.push_back(new Train("17/11/2019", 20801, "Magadh Express"));
+            patna_delhi_trains.push_back(new Train("18/11/2019", 20801, "Magadh Express"));
 
-            patna_delhi_trains.push_back(pair<string, Train*>("14/11/2019", new Train("Vikramshila Express", "14/11/2019", 12467)));
-            patna_delhi_trains.push_back(pair<string, Train*>("15/11/2019", new Train("Vikramshila Express", "15/11/2019", 12467)));
-            patna_delhi_trains.push_back(pair<string, Train*>("16/11/2019", new Train("Vikramshila Express", "16/11/2019", 12467)));
-            patna_delhi_trains.push_back(pair<string, Train*>("17/11/2019", new Train("Vikramshila Express", "17/11/2019", 12467)));
-            patna_delhi_trains.push_back(pair<string, Train*>("18/11/2019", new Train("Vikramshila Express", "18/11/2019", 12467)));
+            patna_delhi_trains.push_back(new Train("14/11/2019", 12275, "Howrah Duronto Express"));
+            patna_delhi_trains.push_back(new Train("15/11/2019", 12275, "Howrah Duronto Express"));
+            patna_delhi_trains.push_back(new Train("16/11/2019", 12275, "Howrah Duronto Express"));
+            patna_delhi_trains.push_back(new Train("17/11/2019", 12275, "Howrah Duronto Express"));
+            patna_delhi_trains.push_back(new Train("18/11/2019", 12275, "Howrah Duronto Express"));
+
+            patna_delhi_trains.push_back(new Train("14/11/2019", 12391, "Shramjeevi SF Express"));
+            patna_delhi_trains.push_back(new Train("15/11/2019", 12391, "Shramjeevi SF Express"));
+            patna_delhi_trains.push_back(new Train("16/11/2019", 12391, "Shramjeevi SF Express"));
+            patna_delhi_trains.push_back(new Train("17/11/2019", 12391, "Shramjeevi SF Express"));
+            patna_delhi_trains.push_back(new Train("18/11/2019", 12391, "Shramjeevi SF Express"));
+
+            patna_delhi_trains.push_back(new Train("14/11/2019", 13483, "Farakka Express"));
+            patna_delhi_trains.push_back(new Train("15/11/2019", 13483, "Farakka Express"));
+            patna_delhi_trains.push_back(new Train("16/11/2019", 13483, "Farakka Express"));
+            patna_delhi_trains.push_back(new Train("17/11/2019", 13483, "Farakka Express"));
+            patna_delhi_trains.push_back(new Train("18/11/2019", 13483, "Farakka Express"));
+
+            patna_delhi_trains.push_back(new Train("14/11/2019", 12467, "Vikramshila Express"));
+            patna_delhi_trains.push_back(new Train("15/11/2019", 12467, "Vikramshila Express"));
+            patna_delhi_trains.push_back(new Train("16/11/2019", 12467, "Vikramshila Express"));
+            patna_delhi_trains.push_back(new Train("17/11/2019", 12467, "Vikramshila Express"));
+            patna_delhi_trains.push_back(new Train("18/11/2019", 12467, "Vikramshila Express"));
 
         }
 
+        void reload(){
+            // function to load data from file
+        }
+
+        void rewrite(){
+            // function to rewrite in file
+        }
+
         vector<station*> Stations;
-        vector<pair<string, Train*>> delhi_patna_trains;
-        vector<pair<string, Train*>> patna_delhi_trains;
+
+        vector<Train*> delhi_patna_trains;
+        vector<Train*> patna_delhi_trains;
+
+       // vector<ticket*> booked_tickets; 
+       // fetch data here
 
 };
