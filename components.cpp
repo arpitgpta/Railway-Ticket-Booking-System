@@ -78,38 +78,35 @@ all_ticket TICKETS;
 // functions
 
 void cancel_ticket(int pnr){
-
+            
+    // 137
+    
 }
 
 bool is_available(int from, int to, char start_st, int trno_inlist, int seat_no, int ctr_in){
 
-
+    // 140
+    
     return true;
 }
 
 int available_seats(int from, int to, char start_st, int trno_inlist){
 
-    int total = 0;
-    for(int i = 0; i < 40; i++) if(is_available(from, to, start_st, trno_inlist, i, 1)) total++;
-    return total;
+    // 140
+    
 }
 
 int book_ticket(){
 
-
+    // 141, 137
+    
     return 0;
 }
 
 
 void re_read(){
 
-    fin.open("Trains.dat");
-    fin.read((char*)&TRAINS, sizeof(TRAINS));
-    fin.close();
-
-    fin.open("tickets.dat");
-    fin.read((char*)&TICKETS, sizeof(TICKETS));
-    fin.close();    
+    // 136
 
 }
 
@@ -117,28 +114,12 @@ void re_read(){
 
 void re_write(){
 
-    fout.open("Trains.dat");
-    fout.write((char*)&TRAINS, sizeof(TRAINS));
-    fout.close();
-
-    fout.open("tickets.dat");
-    fout.write((char*)&TICKETS, sizeof(TICKETS));
-    fout.close();
-
+     // 136
+    
 }
 
 void load_data(){
-
-    fin.open("Stations.dat");
-    fin.read((char*)&STATIONS, sizeof(STATIONS));
-    fin.close();
     
-    fin.open("Trains.dat");
-    fin.read((char*)&TRAINS, sizeof(TRAINS));
-    fin.close();
-
-    fin.open("tickets.dat");
-    fin.read((char*)&TICKETS, sizeof(TICKETS));
-    fin.close();
-
+    // 136
+    
 }
