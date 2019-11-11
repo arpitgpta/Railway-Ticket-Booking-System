@@ -41,11 +41,11 @@ int main(){
     
     load_data();    
 
-    while(1){
+    do{
 
         re_read();
         
-        cout << "Press 1 for Reservation and 2 for cancilation" << endl;
+        cout << "Press 1 for Reservation and 2 for cancilation, 0 to exit" << endl;
         int RorC;
         cin >> RorC;
         if(RorC == 1){
@@ -222,5 +222,5 @@ int main(){
         }
 
        re_write();
-    }
+    }while(RorC != 0);
 }
