@@ -137,6 +137,7 @@ pair<deque<int>, int> available_seats(ticket tkt, int trno_inlist){
 
 int book_ticket(deque<int> avl_seats, int trno_inseq){
 
+    // train no (1369+i)*13
     // 138, 141
 
     // mark in train
