@@ -41,12 +41,12 @@ int main(){
     
     
 
-    while(1){
+    int RorC;
+    do{
 
         re_read();
         ticket sudo_tkt;
-        cout << "Press 1 for Reservation and 2 for cancilation" << endl;
-        int RorC;
+        cout << "Press 1 for Reservation, 2 for cancilation and 0 for exit" << endl;
         cin >> RorC;
         if(RorC == 1){
                     
@@ -142,10 +142,10 @@ int main(){
                             cancel_ticket(TICKETS.tickets[tcno].pnr);
 
                         }
-                    // }
-                    // else{
-                    //     cout << "No seat available on " << jdate << " please try on another date" << endl;
-                    // }
+                    }
+                    else{
+                        cout << "No seat available on " << jdate << " please try on another date" << endl;
+                    }
                 }
             else{
             
@@ -219,16 +219,16 @@ int main(){
                     // else{
                     //     cout << "No seat available on " << jdate << " please try on another date" << endl;
                     // }
-                }
+            
 
         }
-        // else if(RorC == 2){
-        //     int pnr;
-        //     cout << "Enter pnr no of ticket to cancel" << endl;
-        //     cin >> pnr;
-        //     cancel_ticket(pnr);
-        // }
+        else if(RorC == 2){
+            int pnr;
+            cout << "Enter pnr no of ticket to cancel" << endl;
+            cin >> pnr;
+            cancel_ticket(pnr);
+        }
 
-       // re_write();
-    // }
+       re_write();
+    }while(RorC != 0);
 }
