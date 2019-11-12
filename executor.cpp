@@ -73,7 +73,8 @@ int main(){
             
                 bool isAny = false;
                 cout << "train list for delhi to patna" << endl;
-                vector<tuple<deque<int>, int, int>> dp;                
+                vector<pair<deque<int>, int>> dp; 
+                int train_counter = 0;               
                 for(int i = 0; i < 10; i++){
                     if(!strcmp(TRAINS.DtoP[i].jdate, sudo_tkt.jdate)){
                         cout << TRAINS.DtoP[i].train_number << "\t" << TRAINS.DtoP[i].train_name << " ";
@@ -81,7 +82,8 @@ int main(){
                         if(temp.second > 0){ 
                             cout << "Available seats: " <<  temp.second  << endl;
                             isAny = true;
-                            dp.push_back(make_tuple(temp.first, TRAINS.DtoP[i].train_number, i));
+                            dp.push_back(make_pair(temp.first, TRAINS.DtoP[i].train_number));
+                            train_counter++;
                         }
                         else{
                             cout << "NO SEAT AVAILABLE" << endl;
@@ -89,146 +91,147 @@ int main(){
                     }
                 } 
                 
-                    if(isAny){
+                if(isAny){
+                
+                    cout << "Enter train number" << endl;
+                    cin >> selected_train;
+                
+                    cout << "Enter no. of passengers" << endl;
+                    cin >> passengers;
+
+                    sudo_tkt.from = from;
+                    sudo_tkt.to = to;
+                    strcpy(sudo_tkt.jdate, jdate);
+                    sudo_tkt.psgr_count = passengers;
+                    sudo_tkt.train_no = selected_train;
+
+                
+                    cout << "Enter detail of passenger (name, gender[M/F], age)" << endl;
+                    for(int i = 0; i < passengers; i++){
+
+                        cin >> sudo_tkt.psgrs[i].name;
+                        cin >> sudo_tkt.psgrs[i].gender;
+                        cin >> sudo_tkt.psgrs[i].age;
+                        if(i + 1 != passengers) cout << "enter next passenger's detail" << endl;
+
+                    }
                     
-                        cout << "Enter train number" << endl;
-                        cin >> selected_train;
-                    
-                        cout << "Enter no. of passengers" << endl;
-                        cin >> passengers;
-
-                        sudo_tkt.from = from;
-                        sudo_tkt.to = to;
-                        strcpy(sudo_tkt.jdate, jdate);
-                        sudo_tkt.tr_start_DorP = 'd';
-                        sudo_tkt.psgr_count = passengers;
-                        sudo_tkt.train_no = selected_train;
-
-                    
-                        cout << "Enter detail of passenger (name, age, gender[M/F])" << endl;
-                        for(int i = 0; i < passengers; i++){
-
-                            gets(sudo_tkt.psgrs[i].name);
-                            cin >> sudo_tkt.psgrs[i].age;
-                            cin >> sudo_tkt.psgrs[i].gender;
-                            if(i + 1 != passengers) cout << "enter next passenger's detail" << endl;
-
+                    // TICKETS.tickets[TICKETS.ticket_counter] = sudo_tkt;
+                    cout << "done" << endl;
+                    int tcno;
+                    for(int i = 0; i < train_counter; i++){ 
+                        if( dp[i].second == selected_train){
+                            tcno = book_ticket(dp[i].first);
                         }
+                    }
+                    
+
+                    string transation_id;
+                    cout << "total ammount: " << TICKETS.tickets[tcno].amount;
+                    cout << "Enter trangection id" << endl;
+                    cin >> transation_id;
+                    if(transation_id == "12345"){
                         
-                        TICKETS.tickets[TICKETS.ticket_counter] = sudo_tkt;
-                        int tcno;
-                        for(int i = 0; i < 5; i++){
-                            if( get<1>(dp[i]) == selected_train){
-                                tcno = book_ticket(get<0>(dp[i]), get<2>(dp[i]) );
-                            }
-                        }
+                        cout << "Reservation Succesfull" << endl;
+                        cout << "PNR number : " << TICKETS.tickets[tcno].pnr;
+                        cout << "alloted seats: \n";
+                        for(int i = 0; i < passengers; i++) cout << TICKETS.tickets[tcno].psgrs[i].name << "\t" << TICKETS.tickets[tcno].psgrs[i].seat << " ";    cout << endl;
                         
-
-                        string transation_id;
-                        cout << "total ammount: " << TICKETS.tickets[tcno].amount;
-                        cout << "Enter trangection id" << endl;
-                        cin >> transation_id;
-                        if(transation_id == "12345"){
-                            
-                            cout << "Reservation Succesfull" << endl;
-                            cout << "PNR number : " << TICKETS.tickets[tcno].pnr;
-                            cout << "alloted seats: \n";
-                            for(int i = 0; i < passengers; i++) cout << TICKETS.tickets[tcno].psgrs[i].name << "\t" << TICKETS.tickets[tcno].psgrs[i].seat << " ";    cout << endl;
-                            
-                        }
-                        else{
-
-                            // cancel this ticket
-                            cancel_ticket(TICKETS.tickets[tcno].pnr);
-
-                        }
                     }
                     else{
-                        cout << "No seat available on " << jdate << " please try on another date" << endl;
+
+                        // cancel this ticket
+                        cancel_ticket(TICKETS.tickets[tcno].pnr);
+
                     }
                 }
+                else{
+                    cout << "No seat available on " << jdate << " please try on another date" << endl;
+                }
+            }
             else{
             
                 // // upgoing patna to delhi
             
-                // bool isAny = false;
+                sudo_tkt.tr_start_DorP = 'p';
             
-                // cout << "train list for patna to delhi" << endl;
-            
-                // for(int i = 0; i < 10; i++){
-                //     if(jdate == TRAINS.PtoD[i].jdate){
-                //         cout << TRAINS.PtoD[i].train_number << "\t" << TRAINS.PtoD[i].train_name << " ";
-                        // int temp = available_seats(from, to, 'p', i);
-                        // if(temp > 0){ 
-                        //     cout << "available seats: " <<  temp  << endl;
-                        //     isAny = true;
-                        // }
-                        // else{
-                        //     cout << "NO SEAT AVAILABLE" << endl;
-                        // } 
-                    // }
+                bool isAny = false;
+                cout << "train list for patna to delhi" << endl;
+                vector<tuple<deque<int>, int, int>> dp;                
+                for(int i = 0; i < 10; i++){
+                    if(!strcmp(TRAINS.PtoD[i].jdate, sudo_tkt.jdate)){
+                        cout << TRAINS.PtoD[i].train_number << "\t" << TRAINS.PtoD[i].train_name << " ";
+                        pair<deque<int>, int> temp = available_seats(sudo_tkt, i);
+                        if(temp.second > 0){ 
+                            cout << "Available seats: " <<  temp.second  << endl;
+                            isAny = true;
+                            dp.push_back(make_tuple(temp.first, TRAINS.PtoD[i].train_number, i));
+                        }
+                        else{
+                            cout << "NO SEAT AVAILABLE" << endl;
+                        } 
+                    }
                 } 
                 
-                    // if(isAny){
+                if(isAny){
+                
+                    cout << "Enter train number" << endl;
+                    cin >> selected_train;
+                
+                    cout << "Enter no. of passengers" << endl;
+                    cin >> passengers;
+
+                    sudo_tkt.from = from;
+                    sudo_tkt.to = to;
+                    strcpy(sudo_tkt.jdate, jdate);
+                    sudo_tkt.psgr_count = passengers;
+                    sudo_tkt.train_no = selected_train;
+
+                
+                    cout << "Enter detail of passenger (name, age, gender[M/F])" << endl;
+                    for(int i = 0; i < passengers; i++){
+
+                        gets(sudo_tkt.psgrs[i].name);
+                        cin >> sudo_tkt.psgrs[i].age;
+                        cin >> sudo_tkt.psgrs[i].gender;
+                        if(i + 1 != passengers) cout << "enter next passenger's detail" << endl;
+
+                    }
                     
-                    //     cout << "Enter train number" << endl;
-                    //     cin >> selected_train;
+                    TICKETS.tickets[TICKETS.ticket_counter] = sudo_tkt;
+                    int tcno;
+                    for(int i = 0; i < 5; i++){
+                        if( get<1>(dp[i]) == selected_train){
+                            tcno = book_ticket(get<0>(dp[i]));
+                        }
+                    }
                     
-                    //     cout << "Enter no. of passengers" << endl;
-                    //     cin >> passengers;
 
-                    //     TICKETS.tickets[TICKETS.ticket_counter].from = from;
-                    //     TICKETS.tickets[TICKETS.ticket_counter].to = to;
-                    //     strcpy(TICKETS.tickets[TICKETS.ticket_counter].jdate, jdate);
-                    //     TICKETS.tickets[TICKETS.ticket_counter].tr_start_DorP = 'p';
-                    //     TICKETS.tickets[TICKETS.ticket_counter].psgr_count = passengers;
-                    //     TICKETS.tickets[TICKETS.ticket_counter].train_no = selected_train;
-
-                    
-                    //     cout << "Enter detail of passenger (name, age, gender[M/F])" << endl;
-                    //     for(int i = 0; i < passengers; i++){
-
-                    //         gets(TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].name);
-                    //         cin >> TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].age;
-                    //         cin >> TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].gender;
-                    //         if(i + 1 != passengers) cout << "enter next passenger's detail" << endl;
-
-                    //     }
+                    string transation_id;
+                    cout << "total ammount: " << TICKETS.tickets[tcno].amount;
+                    cout << "Enter trangection id" << endl;
+                    cin >> transation_id;
+                    if(transation_id == "12345"){
                         
-                    //     int tcno = book_ticket();
+                        cout << "Reservation Succesfull" << endl;
+                        cout << "PNR number : " << TICKETS.tickets[tcno].pnr;
+                        cout << "alloted seats: \n";
+                        for(int i = 0; i < passengers; i++) cout << TICKETS.tickets[tcno].psgrs[i].name << "\t" << TICKETS.tickets[tcno].psgrs[i].seat << " ";    cout << endl;
+                        
+                    }
+                    else{
 
-                    //     string transation_id;
-                    //     cout << "total ammount: " << TICKETS.tickets[tcno].amount;
-                    //     cout << "Enter trangection id" << endl;
-                    //     cin >> transation_id;
-                    //     if(transation_id == "12345"){
-                            
-                    //         cout << "Reservation Succesfull" << endl;
-                    //         cout << "PNR number : " << TICKETS.tickets[tcno].pnr;
-                    //         cout << "alloted seats: \n";
-                    //         for(int i = 0; i < passengers; i++) cout << TICKETS.tickets[tcno].psgrs[i].name << "\t" << TICKETS.tickets[tcno].psgrs[i].seat << " ";    cout << endl;
-                            
-                    //     }
-                    //     else{
+                        // cancel this ticket
+                        cancel_ticket(TICKETS.tickets[tcno].pnr);
 
-                    //         // cancel this ticket
-                    //         cancel_ticket(TICKETS.tickets[tcno].pnr);
+                    }
+                }
+                else{
+                    cout << "No seat available on " << jdate << " please try on another date" << endl;
+                }
+            }
 
-                    //     }
-                    // }
-                    // else{
-                    //     cout << "No seat available on " << jdate << " please try on another date" << endl;
-                    // }
-            
-
+            re_write();
         }
-        else if(RorC == 2){
-            int pnr;
-            cout << "Enter pnr no of ticket to cancel" << endl;
-            cin >> pnr;
-            cancel_ticket(pnr);
-        }
-
-       re_write();
     }while(RorC != 0);
 }
