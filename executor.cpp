@@ -53,32 +53,32 @@ int main(){
 
 
             cout << "Enter journy starting station code" << endl;
-            cin >> sudo_tkt.from;
+            cin >> TICKETS.tickets[TICKETS.ticket_counter].from;
             
             cout << "Enter end station code" << endl;
-            cin >> sudo_tkt.to;
+            cin >> TICKETS.tickets[TICKETS.ticket_counter].to;
             
             cout << "Enter journy date(in dd/mm/yyyy format)    " << endl;
-            cin >> sudo_tkt.jdate;
+            cin >> TICKETS.tickets[TICKETS.ticket_counter].jdate;
             
-            if(sudo_tkt.from == sudo_tkt.to){
+            if(TICKETS.tickets[TICKETS.ticket_counter].from == TICKETS.tickets[TICKETS.ticket_counter].to){
                 cout << "starting and end station cann't be same" << endl;
                 continue;
             }
 
-            else if(sudo_tkt.from < sudo_tkt.to){
+            else if(TICKETS.tickets[TICKETS.ticket_counter].from < TICKETS.tickets[TICKETS.ticket_counter].to){
             
                 // upgoing delhi to patna
-                sudo_tkt.tr_start_DorP = 'd';
+                TICKETS.tickets[TICKETS.ticket_counter].tr_start_DorP = 'd';
             
                 bool isAny = false;
                 cout << "train list for delhi to patna" << endl;
                 vector<pair<deque<int>, int>> dp; 
                 int train_counter = 0;               
                 for(int i = 0; i < 10; i++){
-                    if(!strcmp(TRAINS.DtoP[i].jdate, sudo_tkt.jdate)){
+                    if(!strcmp(TRAINS.DtoP[i].jdate, TICKETS.tickets[TICKETS.ticket_counter].jdate)){
                         cout << TRAINS.DtoP[i].train_number << "\t" << TRAINS.DtoP[i].train_name << " ";
-                        pair<deque<int>, int> temp = available_seats(sudo_tkt, i);
+                        pair<deque<int>, int> temp = available_seats(TICKETS.tickets[TICKETS.ticket_counter], i);
                         if(temp.second > 0){ 
                             cout << "Available seats: " <<  temp.second  << endl;
                             isAny = true;
@@ -94,30 +94,26 @@ int main(){
                 if(isAny){
                 
                     cout << "Enter train number" << endl;
-                    cin >> selected_train;
+                    cin >> TICKETS.tickets[TICKETS.ticket_counter].train_no;
                 
                     cout << "Enter no. of passengers" << endl;
-                    cin >> passengers;
+                    cin >> TICKETS.tickets[TICKETS.ticket_counter].psgr_count;
 
-                    sudo_tkt.from = from;
-                    sudo_tkt.to = to;
-                    strcpy(sudo_tkt.jdate, jdate);
-                    sudo_tkt.psgr_count = passengers;
-                    sudo_tkt.train_no = selected_train;
+                    TICKETS.tickets[TICKETS.ticket_counter].from = from;
+                    TICKETS.tickets[TICKETS.ticket_counter].to = to;
+                    strcpy(TICKETS.tickets[TICKETS.ticket_counter].jdate, jdate);
 
                 
                     cout << "Enter detail of passenger (name, gender[M/F], age)" << endl;
                     for(int i = 0; i < passengers; i++){
 
-                        cin >> sudo_tkt.psgrs[i].name;
-                        cin >> sudo_tkt.psgrs[i].gender;
-                        cin >> sudo_tkt.psgrs[i].age;
+                        cin >> TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].name;
+                        cin >> TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].gender;
+                        cin >> TICKETS.tickets[TICKETS.ticket_counter].psgrs[i].age;
                         if(i + 1 != passengers) cout << "enter next passenger's detail" << endl;
 
                     }
                     
-                    // TICKETS.tickets[TICKETS.ticket_counter] = sudo_tkt;
-                    cout << "done" << endl;
                     int tcno;
                     for(int i = 0; i < train_counter; i++){ 
                         if( dp[i].second == selected_train){
