@@ -77,12 +77,26 @@ all_ticket TICKETS;
 
 // functions
 
+
+void unmark(){
+
+}
+
 void cancel_ticket(int pnr){
 
     // 136, 137
 
     // remove from ticket list
     // unmark in train seat segment tree
+
+    for(int i = 0; i < TICKETS.ticket_counter; i++){
+        if(TICKETS.tickets[i].pnr = pnr){
+
+            ticket sudo_tkt = TICKETS.tickets[i]; 
+            unmark();
+            break;
+        }
+    }
 
 
 }
@@ -130,20 +144,34 @@ pair<deque<int>, int> available_seats(ticket tkt, int trno_inlist){
     int total = 0;
     for(int i = 0; i < 40; i++) if(is_available(tkt, trno_inlist, i, 1)){
         if(i%7 == 0 || i%7 == 3 || i%7 == 7) avl_seats.push_front(i);
+        else avl_seats.push_back(i);
         total++;
     } 
     return make_pair(avl_seats, total);
 }
 
-int book_ticket(deque<int> avl_seats, int trno_inseq){
-
+int book_ticket(deque<int> avl_seats){
+    cout << "book ticket called" << endl;    
     // train no (1369+i)*13
-    // 138, 141
 
-    // mark in train
-    // allot seat
-    // generate pnr
-    // calculate amount
+    /*
+    
+        first of all you will get all data at TICKETS.tickets[TICKETS.ticket_counter] 
+        now calculate index of train
+        with help of from and to deside DtoP or PtoD
+        
+        now 
+        for i in psgn_count:
+            deside if you have to give him lower birth or upper 
+            for lower pop_front and vise_versa
+            now put this desided seat in psgns[i].seat
+            and mark on seat in the above desided train -- most horrible
+
+        return TICKETS.ticket_counter++;
+
+    
+    
+    */
 
     return 0;
 }
