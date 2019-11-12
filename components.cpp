@@ -104,36 +104,36 @@ void cancel_ticket(int pnr){
 int is_available(ticket tkt, int trno_inlist, int seat_no, int ctr_index){
     
     // done -- 140
-
+    int ans = 0;
     if(tkt.tr_start_DorP == 'd'){
         if(TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][0] == TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][1]){
-            return TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][2];
+            ans =  TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][2];
         }
         else if(tkt.to >= TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][1] && tkt.from <= TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][0]){
-            return TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][2];
+            ans =  TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][2];
         }
-        else if(TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][0] > tkt.to || TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][1] < tkt.from) return 1;
+        else if(TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][0] > tkt.to || TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][1] < tkt.from) ans =  1;
         else if(TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][0] <= tkt.from || TRAINS.DtoP[trno_inlist].seat[seat_no][ctr_index][1] >= tkt.to){
             int a = is_available(tkt, trno_inlist, seat_no, ctr_index*2);
             int b = is_available(tkt, trno_inlist, seat_no, ctr_index*2+1);
-            return a&&b;
+            ans =  a&&b;
         }
     }
     else{
         if(TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][0] == TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][1]){
-            return TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][2];
+            ans =  TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][2];
         }
         else if(tkt.to >= TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][1] && tkt.from <= TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][0]){
-            return TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][2];
+            ans =  TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][2];
         }
-        else if(TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][0] > tkt.to || TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][1] < tkt.from) return 1;
+        else if(TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][0] > tkt.to || TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][1] < tkt.from) ans =  1;
         else if(TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][0] <= tkt.from || TRAINS.PtoD[trno_inlist].seat[seat_no][ctr_index][1] >= tkt.to){
             int a = is_available(tkt, trno_inlist, seat_no, ctr_index*2);
             int b = is_available(tkt, trno_inlist, seat_no, ctr_index*2+1);
-            return a&&b;
+            ans =  a&&b;
         }
-    }    
-    return 1;
+    }
+    return ans;
 }
 
 pair<deque<int>, int> available_seats(ticket tkt, int trno_inlist){
